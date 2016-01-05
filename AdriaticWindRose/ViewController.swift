@@ -10,7 +10,7 @@ extension Double {
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var image: UIImageView!
-    var locationManager:CLLocationManager!
+    var locationManager: CLLocationManager!
     
     // MARK: - View lifecycle
     
@@ -24,13 +24,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Image
     
-    func updateImageAngle(degree degree: Double) {
+    func updateImageAngle(degrees degrees: Double) {
         UIView.animateWithDuration(
             0.25,
             delay: 0,
             options: UIViewAnimationOptions.CurveEaseOut,
             animations: {
-                self.image.transform = CGAffineTransformMakeRotation(-degree.degreesToRadians)
+                self.image.transform = CGAffineTransformMakeRotation(-degrees.degreesToRadians)
             },
             completion: { finish in }
         )
@@ -39,7 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        self.updateImageAngle(degree: Double(newHeading.magneticHeading))
+        self.updateImageAngle(degrees: Double(newHeading.magneticHeading))
     }
     
 }
